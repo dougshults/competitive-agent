@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard | Competitive Agent{% endblock %}
+{% block content %}
+<div id="content">
+    <p>Welcome to your Competitive Analysis Dashboard!</p>
+    <button id="load-articles">Load Articles</button>
+    <div id="articles"></div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="/static/js/app.js"></script>
+{% endblock %} 

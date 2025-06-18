@@ -1,0 +1,204 @@
+2025-06-17 16:40:51,250 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:40:51,280 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.1.158:8080
+2025-06-17 16:40:51,280 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-17 16:40:51,280 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 16:40:51,388 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:40:51,404 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 16:40:51,411 - werkzeug - INFO -  * Debugger PIN: 831-253-658
+2025-06-17 16:46:55,511 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:46:55,541 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.1.158:8080
+2025-06-17 16:46:55,541 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-17 16:46:55,541 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 16:46:55,643 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:46:55,658 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 16:46:55,664 - werkzeug - INFO -  * Debugger PIN: 831-253-658
+2025-06-17 16:47:50,643 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:47:50,671 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.1.158:8080
+2025-06-17 16:47:50,672 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-17 16:47:50,672 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 16:47:50,774 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:47:50,790 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 16:47:50,796 - werkzeug - INFO -  * Debugger PIN: 831-253-658
+2025-06-17 16:48:00,873 - __main__ - INFO - Home page accessed
+2025-06-17 16:48:00,874 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 16:48:00] "GET / HTTP/1.1" 200 -
+2025-06-17 16:49:08,238 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:49:08,272 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.1.158:8080
+2025-06-17 16:49:08,272 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-17 16:49:08,273 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 16:49:08,375 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:49:08,392 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 16:49:08,400 - werkzeug - INFO -  * Debugger PIN: 831-253-658
+2025-06-17 16:49:12,453 - __main__ - INFO - Home page accessed
+2025-06-17 16:49:12,454 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 16:49:12] "GET / HTTP/1.1" 200 -
+2025-06-17 16:49:32,297 - __main__ - INFO - Dashboard accessed
+2025-06-17 16:49:32,298 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 16:49:32] "GET /dashboard HTTP/1.1" 200 -
+2025-06-17 16:49:44,310 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/routes
+2025-06-17 16:49:44,311 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 16:49:44] "[33mGET /routes HTTP/1.1[0m" 404 -
+2025-06-17 16:51:03,018 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:51:03,052 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.1.158:8080
+2025-06-17 16:51:03,052 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-17 16:51:03,052 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 16:51:03,153 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 16:51:03,171 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 16:51:03,181 - werkzeug - INFO -  * Debugger PIN: 831-253-658
+2025-06-17 16:51:08,837 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 16:51:08] "GET /routes HTTP/1.1" 200 -
+2025-06-17 17:05:12,585 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:05:12,586 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:05:12,618 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.1.158:8080
+2025-06-17 17:05:12,618 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-17 17:05:12,618 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:05:12,721 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:05:12,723 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:05:12,740 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:05:12,747 - werkzeug - INFO -  * Debugger PIN: 831-253-658
+2025-06-17 17:05:28,748 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api-test-data
+2025-06-17 17:05:28,749 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:05:28] "[33mGET /api-test-data HTTP/1.1[0m" 404 -
+2025-06-17 17:05:37,623 - __main__ - INFO - Creating test data
+2025-06-17 17:05:37,647 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:05:37] "GET /api/test-data HTTP/1.1" 200 -
+2025-06-17 17:05:51,758 - __main__ - INFO - Competitors list requested
+2025-06-17 17:05:51,760 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:05:51] "GET /api/competitors HTTP/1.1" 200 -
+2025-06-17 17:29:37,085 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:29:37,086 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:29:37,121 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.1.158:8080
+2025-06-17 17:29:37,121 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-17 17:29:37,122 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:29:37,224 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:29:37,226 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:29:37,244 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:29:37,253 - werkzeug - INFO -  * Debugger PIN: 138-182-276
+2025-06-17 17:29:48,777 - __main__ - INFO - Competitors list requested
+2025-06-17 17:29:48,779 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:29:48] "GET /api/competitors HTTP/1.1" 200 -
+2025-06-17 17:29:50,837 - __main__ - INFO - Competitors list requested
+2025-06-17 17:29:50,838 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:29:50] "GET /api/competitors HTTP/1.1" 200 -
+2025-06-17 17:31:10,707 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:31:10,709 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:31:10,734 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.1.158:8080
+2025-06-17 17:31:10,735 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-17 17:31:10,735 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:31:10,836 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:31:10,837 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:31:10,853 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:31:10,859 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:31:56,269 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:31:56,270 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:31:56] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:31:59,033 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:31:59,035 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:31:59] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:32:35,055 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:32:35,057 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:32:35] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:33:37,328 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:33:37,359 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:33:37,514 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:33:37,515 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:33:37,540 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:33:37,549 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:34:20,977 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:34:21,014 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:34:21,188 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:34:21,190 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:34:21,210 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:34:21,216 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:34:37,388 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:34:37,417 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:34:37,568 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:34:37,569 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:34:37,589 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:34:37,596 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:34:50,715 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:34:50,745 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:34:50,883 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:34:50,885 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:34:50,906 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:34:50,911 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:34:59,999 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/test_analyzer.py', reloading
+2025-06-17 17:35:00,060 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:35:00,192 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:35:00,193 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:35:00,212 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:35:00,218 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:35:11,696 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:35:11,697 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:35:11] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:35:12,762 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:35:12,762 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:35:12] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:35:22,431 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:35:22,463 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:35:22,612 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:35:22,613 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:35:22,633 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:35:22,644 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:35:34,757 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:35:34,790 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:35:34,942 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:35:34,943 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:35:34,963 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:35:34,968 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:35:57,177 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:35:57,219 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:35:57,365 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:35:57,367 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:35:57,385 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:35:57,390 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:36:09,779 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:36:09,780 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:36:09] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:36:10,629 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:36:10,630 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:36:10] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:36:10,820 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:36:10,820 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:36:10] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:36:15,125 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:36:15,126 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:36:15] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:36:38,781 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:36:38,823 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:36:39,017 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:36:39,018 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:36:39,038 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:36:39,044 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:36:55,189 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:36:55,226 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:36:55,369 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:36:55,370 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:36:55,390 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:36:55,395 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:37:04,843 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:37:04,843 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:37:04] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:37:05,546 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:37:05,546 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:37:05] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:37:05,736 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:37:05,737 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:37:05] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:37:05,963 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:37:05,963 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:37:05] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:38:38,472 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/analyzer.py', reloading
+2025-06-17 17:38:38,509 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:38:38,660 - __main__ - INFO - Database status: {'status': 'Database connection successful'}
+2025-06-17 17:38:38,661 - __main__ - INFO - Starting Competitive Agent Server in development mode on port 8080
+2025-06-17 17:38:38,685 - werkzeug - WARNING -  * Debugger is active!
+2025-06-17 17:38:38,691 - werkzeug - INFO -  * Debugger PIN: 977-721-669
+2025-06-17 17:39:05,656 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:39:05,657 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:39:05] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:39:06,407 - __main__ - ERROR - Page not found: http://127.0.0.1:8080/api/ai-test
+2025-06-17 17:39:06,408 - werkzeug - INFO - 127.0.0.1 - - [17/Jun/2025 17:39:06] "[33mGET /api/ai-test HTTP/1.1[0m" 404 -
+2025-06-17 17:40:53,104 - werkzeug - INFO -  * Detected change in '/Users/ds/www/competitive-agent/main.py', reloading
+2025-06-17 17:40:53,140 - werkzeug - INFO -  * Restarting with stat
+2025-06-17 17:40:58,909 - werkzeug - INFO -  * Restarting with stat
