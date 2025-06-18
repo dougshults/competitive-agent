@@ -7,7 +7,7 @@ import os
 class Config:
     """Base configuration."""
     # API Keys
-    OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY') or 'your-key-here'
+    OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
     
     # Application Settings
     DEBUG = True

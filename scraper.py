@@ -99,7 +99,7 @@ class CompetitiveScraper:
             
             # === HTML SOURCES (More targeted) ===
             'propmodo': 'https://www.propmodo.com/',
-            # 'proptechzone': 'https://www.proptechzone.com/',
+            'proptechzone': 'https://www.proptechzone.com/',
             # 'metaprop_insights': 'https://www.metaprop.org/insights/',
         }
         self._cache = {}
@@ -125,7 +125,6 @@ class CompetitiveScraper:
             cached_content = self._get_cached_content(url)
             if cached_content:
                 return cached_content
-
             async with session.get(url, headers=headers, timeout=10) as response:
                 response.raise_for_status()
                 content = await response.text()
@@ -133,7 +132,7 @@ class CompetitiveScraper:
                 return content
         except Exception as e:
             logger.error(f"Failed to fetch {url}: {str(e)}")
-            return None
+            return ''
 
     async def _scrape_rss_feed_async(self, feed_url: str, source_name: str, max_articles: int = 5) -> List[Dict[str, Any]]:
         """Scrape articles from an RSS feed with a limit using BeautifulSoup only."""
@@ -148,11 +147,13 @@ class CompetitiveScraper:
             async with aiohttp.ClientSession() as session:
                 async with session.get(feed_url, headers=headers, timeout=10) as response:
                     if response.status != 200:
-                        logger.error(f"Failed to fetch RSS feed {feed_url}: {response.status}")
+                        logger.error(f"Failed to fetch RSS feed {feed_url} for {source_name}: {response.status}")
                         return []
                     content = await response.text()
                     soup = BeautifulSoup(content, 'xml')
-                    items = soup.find_all('item')[:max_articles]
+                    items = soup.find_all('item')
+                    logger.info(f"[DEBUG] {source_name}: Found {len(items)} <item> elements in RSS feed.")
+                    items = items[:max_articles]
                     articles = []
                     for item in items:
                         title = item.find('title')
@@ -162,14 +163,16 @@ class CompetitiveScraper:
                         article = {
                             'title': title.get_text() if title else '',
                             'url': link.get_text().strip() if link else '',
+                            'link': link.get_text().strip() if link else '',
                             'published': pub_date.get_text() if pub_date else '',
                             'source': source_name,
                             'content': description.get_text() if description else ''
                         }
                         articles.append(article)
+                    logger.info(f"[DEBUG] {source_name}: Extracted {len(articles)} articles from RSS feed.")
                     return articles
         except Exception as e:
-            logger.error(f"Error scraping RSS feed {feed_url}: {str(e)}")
+            logger.error(f"Error scraping RSS feed {feed_url} for {source_name}: {str(e)}")
             return []
 
     async def _scrape_propmodo_async(self, session, max_articles=5):
@@ -179,14 +182,11 @@ class CompetitiveScraper:
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
             }
-            
             content = await self._fetch_url(session, url, headers)
             if not content:
                 return []
-            
             soup = BeautifulSoup(content, 'html.parser')
             articles = []
-            
             article_selectors = [
                 'a[href*="/news/"]',
                 'a[href*="/article/"]', 
@@ -195,45 +195,85 @@ class CompetitiveScraper:
                 'h2 a',
                 'h3 a'
             ]
-            
             article_links = []
             for selector in article_selectors:
                 links = soup.select(selector)
                 if links:
                     article_links = links[:max_articles]
                     break
-            
+            if not article_links:
+                return []
             for link in article_links:
-                href = link.get('href')
-                title = link.get_text().strip()
-                
+                href = link.get('href') or ''
+                title = link.get_text().strip() or ''
                 if href:
                     if isinstance(href, str) and href.startswith('/'):
                         href = f"{url.rstrip('/')}{href}"
                     elif isinstance(href, str) and not href.startswith('http'):
                         href = f"{url.rstrip('/')}/{href}"
-                    
-                    article = {
-                        'title': title,
-                        'link': href,
-                        'content': title,
-                        'summary': title,
-                        'published': '',
-                        'source': 'propmodo'
-                    }
-                    articles.append(article)
-            
+                article = {
+                    'title': title,
+                    'link': href,
+                    'url': href,
+                    'content': title,
+                    'summary': title,
+                    'published': '',
+                    'source': 'propmodo'
+                }
+                articles.append(article)
             return articles
-            
         except Exception as e:
             logger.error(f"Propmodo scraping failed: {str(e)}")
             return []
 
+    async def _scrape_proptechzone_async(self, session, max_articles=5):
+        """Scrape Proptechzone asynchronously."""
+        try:
+            url = self.sources['proptechzone']
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+            }
+            content = await self._fetch_url(session, url, headers)
+            if not content:
+                return []
+            soup = BeautifulSoup(content, 'html.parser')
+            articles = []
+            article_links = soup.select('a.card, a[href*="/companies/"]')[:max_articles]
+            if not article_links:
+                return []
+            for link in article_links:
+                href = link.get('href') or ''
+                title = link.get_text().strip() or ''
+                if href:
+                    if isinstance(href, str) and href.startswith('/'):
+                        href = f"{url.rstrip('/')}{href}"
+                    elif isinstance(href, str) and not href.startswith('http'):
+                        href = f"{url.rstrip('/')}/{href}"
+                article = {
+                    'title': title,
+                    'link': href,
+                    'url': href,
+                    'content': title,
+                    'summary': title,
+                    'published': '',
+                    'source': 'proptechzone'
+                }
+                articles.append(article)
+            return articles
+        except Exception as e:
+            logger.error(f"Proptechzone scraping failed: {str(e)}")
+            return []
+
     async def _scrape_all_sources_async(self, max_articles_per_source: int = 5) -> List[Dict[str, Any]]:
-        """Scrape all sources with limits."""
+        """Scrape all sources with limits, using custom scrapers for HTML sources."""
         tasks = []
         for source_name, source_info in self.sources.items():
-            tasks.append(self._scrape_rss_feed_async(source_info, source_name, max_articles_per_source))
+            if source_name == 'propmodo':
+                tasks.append(self._scrape_propmodo_async(None, max_articles_per_source))
+            elif source_name == 'proptechzone':
+                tasks.append(self._scrape_proptechzone_async(None, max_articles_per_source))
+            else:
+                tasks.append(self._scrape_rss_feed_async(source_info, source_name, max_articles_per_source))
         results = await asyncio.gather(*tasks, return_exceptions=True)
         all_articles = []
         for result in results:
@@ -243,20 +283,26 @@ class CompetitiveScraper:
                 logger.error(f"Error in scraping task: {str(result)}")
         return all_articles
 
-    def scrape_proptech_articles(self, max_articles: int = 10) -> List[Dict[str, Any]]:
-        """Scrape PropTech articles with a limit."""
+    def scrape_proptech_articles(self, max_articles: int = 5) -> List[Dict[str, Any]]:
+        """Scrape PropTech articles with a limit, always returning at least 3 articles from any source if not enough match the filter."""
         try:
             articles = asyncio.run(self._scrape_all_sources_async(max_articles_per_source=3))
             filtered_articles = []
+            non_matching_articles = []
             
             for article in articles:
                 if self.is_proptech_relevant(article['title'] + ' ' + article['content']):
                     filtered_articles.append(article)
-                    if len(filtered_articles) >= max_articles:
-                        break
-            
-            logger.info(f"Found {len(filtered_articles)} PropTech articles out of {len(articles)} total articles")
-            return filtered_articles
+                else:
+                    non_matching_articles.append(article)
+                if len(filtered_articles) >= max_articles:
+                    break
+            # If not enough filtered, fill with non-matching articles
+            if len(filtered_articles) < 3:
+                needed = 3 - len(filtered_articles)
+                filtered_articles.extend(non_matching_articles[:needed])
+            # Always return at least 3, up to max_articles
+            return filtered_articles[:max(max_articles, 3)]
         except Exception as e:
             logger.error(f"Error in scrape_proptech_articles: {str(e)}")
             return []
@@ -283,7 +329,7 @@ class CompetitiveScraper:
         for keyword in self.PROPTECH_KEYWORDS:
             if keyword.lower() in text:
                 score += 1
-                if score >= 2:  # Require at least 2 keyword matches
+                if score >= 1:  # Require at least 1 keyword match
                     return True
         
         return False

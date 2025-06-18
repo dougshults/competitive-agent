@@ -9,6 +9,8 @@ from database import init_database, test_db, get_db_connection
 from models import Competitor, Analysis
 from analyzer import CompetitiveAnalyzer
 from scraper import CompetitiveScraper
+import requests
+from concurrent.futures import ThreadPoolExecutor
 
 """
 Competitive Agent
@@ -81,6 +83,31 @@ def home():
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+
+@app.route('/competitor/<int:competitor_id>')
+def competitor(competitor_id):
+    """Display individual competitor page with analyses."""
+    try:
+        # Get competitor details
+        competitor = Competitor.get_by_id(competitor_id)
+        if not competitor:
+            return "Competitor not found", 404
+        
+        # Get analyses for this competitor
+        conn = get_db_connection()
+        analyses = conn.execute(
+            'SELECT * FROM analyses WHERE competitor_id = ? ORDER BY timestamp DESC',
+            (competitor_id,)
+        ).fetchall()
+        conn.close()
+        
+        # Convert sqlite3.Row objects to dictionaries
+        analyses_list = [dict(row) for row in analyses]
+        
+        return render_template('competitor.html', competitor=competitor, analyses=analyses_list)
+    except Exception as e:
+        logger.error(f'Error loading competitor page {competitor_id}: {str(e)}')
+        return "Error loading competitor page", 500
 
 @app.route('/api/analyze')
 def analyze():
@@ -223,8 +250,19 @@ def analyze_competitor_content():
 @app.route('/api/test-scrape')
 def test_scrape():
     scraper = CompetitiveScraper()
+    # Fetch the raw RSS feed content for debugging
+    feed_url = scraper.sources['techcrunch_main']
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+    }
+    response = requests.get(feed_url, headers=headers, timeout=10)
+    raw_xml = response.text
     articles = scraper.scrape_rss_feed('techcrunch_main', max_articles=3)
-    return {"articles": articles}
+    return {"articles": articles, "raw_xml": raw_xml[:2000]}  # Return first 2000 chars for brevity
 
 @app.route('/api/scrape-and-analyze')
 def scrape_and_analyze():
@@ -238,7 +276,7 @@ def scrape_and_analyze():
         analysis = analyzer.analyze_content(article['content'], 'TechCrunch')
         analyses.append({
             'article_title': article['title'],
-            'article_link': article['link'],
+            'article_link': article.get('link', article.get('url', '')),
             'ai_analysis': analysis
         })
     return {"analyses": analyses}
@@ -303,28 +341,39 @@ def proptech_articles():
 def proptech_intelligence():
     scraper = CompetitiveScraper()
     analyzer = CompetitiveAnalyzer()
-    
-    # Get PropTech-filtered articles
     articles = scraper.scrape_proptech_articles(max_articles=10)
-    
-    # Analyze with PropTech focus
-    analyses = []
-    for article in articles:
-        print(f"🤖 Analyzing PropTech article: {article['title'][:50]}...")
-        
-        # Enhanced PropTech analysis
-        analysis = analyzer.analyze_content(
-            article['content'], 
-            f"PropTech-Industry"
-        )
-        
-        analyses.append({
-            'title': article['title'],
-            'source': article['source'],
-            'link': article['link'],
-            'proptech_analysis': analysis
-        })
-    
+
+    async def analyze_article_async(article):
+        content = article.get('content', '')
+        if not content:
+            return None
+        try:
+            loop = asyncio.get_event_loop()
+            # Run analyze_content in a thread to avoid blocking
+            summary = await loop.run_in_executor(
+                None, analyzer.analyze_content, content, article.get('source', '')
+            )
+            return {
+                'title': article.get('title', ''),
+                'source': article.get('source', ''),
+                'link': article.get('link', article.get('url', '')),
+                'proptech_analysis': summary or ''
+            }
+        except Exception as e:
+            logger.error(f"Error analyzing article: {str(e)}")
+            return None
+
+    async def analyze_all_articles():
+        tasks = [analyze_article_async(article) for article in articles]
+        results = await asyncio.gather(*tasks)
+        return [r for r in results if r]
+
+    # Run the async analysis
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    analyses = loop.run_until_complete(analyze_all_articles())
+    loop.close()
+
     return {
         "proptech_focus": True,
         "total_articles_found": len(analyses),

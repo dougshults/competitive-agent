@@ -5,16 +5,42 @@
     <h2>{{ competitor.name }}</h2>
     <p><strong>Website:</strong> <a href="{{ competitor.website }}" target="_blank">{{ competitor.website }}</a></p>
     <h3>Analyses</h3>
-    <ul>
-        {% for analysis in analyses %}
-        <li>
-            <div class="analysis-content">{{ analysis.content }}</div>
-            <div class="analysis-result">AI: {{ analysis.result }}</div>
-        </li>
-        {% else %}
-        <li>No analyses found for this competitor.</li>
-        {% endfor %}
-    </ul>
+    {% for analysis in analyses %}
+    <div class="analysis-item">
+        <div class="analysis-content">
+            <h4>Content Analyzed:</h4>
+            <p>{{ analysis.content }}</p>
+        </div>
+        <div class="analysis-result">
+            <h4>AI Analysis:</h4>
+            <div class="analysis-table">
+                {% set sections = analysis.analysis.split('**') %}
+                {% if sections|length > 1 %}
+                <table>
+                    <tbody>
+                        {% for i in range(1, sections|length, 2) %}
+                            {% if i + 1 < sections|length %}
+                                {% set label = sections[i].strip(':') %}
+                                {% set content = sections[i + 1].strip() %}
+                                {% if content and not content.startswith('[') %}
+                                    <tr>
+                                        <th>{{ label }}</th>
+                                        <td>{{ content }}</td>
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <p>{{ analysis.analysis }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p>No analyses found for this competitor.</p>
+    {% endfor %}
     <a href="/dashboard">&larr; Back to Dashboard</a>
 </div>
 {% endblock %} 
