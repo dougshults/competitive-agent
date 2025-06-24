@@ -2,7 +2,7 @@
 
 ## Overview
 
-PropTech Intel is a Flask-based web application designed for property technology intelligence. The application is configured for deployment on Replit using Gunicorn as the WSGI server with PostgreSQL as the database backend.
+PropTech Intel is a Flask-based competitive intelligence platform for property technology analysis. The application features AI-powered article analysis, real-time PropTech news scraping, and structured competitive intelligence reporting. Configured for deployment on Replit using Gunicorn with SQLite database backend.
 
 ## System Architecture
 
@@ -23,17 +23,17 @@ PropTech Intel is a Flask-based web application designed for property technology
 
 ## Key Components
 
-### Application Entry Point
-- **main.py**: Primary entry point for Replit deployment
-  - Handles environment setup and configuration
-  - Manages Flask app initialization
-  - Configures logging for debugging
+### Application Architecture
+- **main.py**: Primary Flask application with all routes and endpoints
+- **analyzer.py**: OpenAI-powered competitive intelligence analysis engine  
+- **scraper.py**: Multi-source PropTech article scraping with content filtering
+- **models.py**: Data models for competitors, analyses, and caching
+- **database.py**: SQLite database management and helper functions
+- **config.py**: Application configuration with environment variable support
 
-### Configuration Management
-- **replit_config.py**: Replit-specific configuration utilities
-  - Project structure verification
-  - Environment variable setup with fallbacks
-  - Development/production environment handling
+### Frontend Interface
+- **templates/dashboard.html**: Main PropTech intelligence dashboard interface
+- **static/js/app.js**: Interactive article loading and display functionality
 
 ### Deployment Configuration
 - **.replit**: Replit deployment configuration
@@ -89,9 +89,9 @@ PropTech Intel is a Flask-based web application designed for property technology
 - **Additional**: Configurable based on application requirements
 
 ### Database Strategy
-- **Primary**: PostgreSQL for production data
-- **ORM**: Flask-SQLAlchemy for database abstraction
-- **Migrations**: Managed through Flask-SQLAlchemy
+- **Primary**: SQLite for local development and production
+- **Models**: Raw SQL with database.py abstraction layer
+- **Caching**: AI analysis results cached to improve performance
 
 ## Changelog
 
