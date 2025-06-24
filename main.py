@@ -77,15 +77,13 @@ def internal_error(error):
 # Routes
 @app.route('/')
 def home():
-    """Home page route."""
-    logger.info('Home page accessed')
-    return jsonify({
-        "message": "Competitive Analysis Agent",
-        "status": "running"
-    })
+    """Dashboard home page route."""
+    logger.info('Dashboard accessed')
+    return render_template('dashboard.html')
 
 @app.route('/dashboard')
 def dashboard():
+    """Redirect to home for backward compatibility."""
     return render_template('dashboard.html')
 
 @app.route('/competitor/<int:competitor_id>')

@@ -98,6 +98,9 @@ PropTech Intel is a Flask-based web application designed for property technology
 ```
 Changelog:
 - June 24, 2025. Initial setup
+- June 24, 2025. Fixed SQLite database integration and OpenAI API connectivity
+- June 24, 2025. Implemented competitive intelligence analysis with structured output
+- June 24, 2025. Moved dashboard to root route (/) as primary user interface
 ```
 
 ## User Preferences
