@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 modules = ["python-3.11"]
 
 [nix]
@@ -32,3 +33,30 @@ waitForPort = 5000
 [[ports]]
 localPort = 5000
 externalPort = 80
+=======
+# Replit configuration file
+run = "python main.py"
+modules = ["python-3.11"]
+hidden = [".config", "package.json"]
+entrypoint = "main.py"
+
+[deployment]
+run = ["sh", "-c", "python main.py"]
+
+[env]
+PYTHONPATH = "${PYTHONPATH}:${REPL_HOME}"
+PYTHON_LD_LIBRARY_PATH = "/nix/store/p21fdyxqb3yqflpim7g8s1mymgpnqiv7-python3-3.11.8/lib"
+
+[nix]
+channel = "stable-23.11"
+
+[packager]
+language = "python3"
+ignoredPackages = ["unit_tests"]
+
+[packager.features]
+enabledForHosting = false
+packageSearch = true
+guessImports = true
+enabledForPackageManager = true 
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb

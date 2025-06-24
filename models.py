@@ -64,6 +64,7 @@ class Analysis:
             (competitor_id,)
         ).fetchone()
         conn.close()
+<<<<<<< HEAD
         return dict(analysis) if analysis else None
     
     @staticmethod
@@ -76,3 +77,6 @@ class Analysis:
         ).fetchall()
         conn.close()
         return [dict(row) for row in analyses] 
+=======
+        return dict(analysis) if analysis else None 
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb

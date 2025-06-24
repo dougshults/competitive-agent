@@ -11,11 +11,19 @@ class Config:
     
     # Application Settings
     DEBUG = True
+<<<<<<< HEAD
     PORT = 5000  # Replit uses port 5000
     SECRET_KEY = os.environ.get('SESSION_SECRET') or os.environ.get('SECRET_KEY') or 'dev-secret-key'
     
     # Database - Force SQLite for simplicity
     DATABASE_URL = 'sqlite:///competitive_agent.db'
+=======
+    PORT = 8080
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key'
+    
+    # Database
+    DATABASE_URL = os.environ.get('DATABASE_URL') or 'sqlite:///competitive_agent.db'
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb
     
     # AI Analysis settings
     MODEL = "gpt-3.5-turbo"

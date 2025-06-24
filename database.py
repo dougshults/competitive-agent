@@ -9,6 +9,7 @@ from typing import Optional
 
 def get_db_connection():
     """Get a database connection."""
+<<<<<<< HEAD
     # Handle both SQLite URL format and PostgreSQL URL (fallback to SQLite)
     database_url = Config.DATABASE_URL
     if database_url.startswith('postgres'):
@@ -19,6 +20,9 @@ def get_db_connection():
         db_path = database_url.replace('sqlite:///', '') if database_url.startswith('sqlite:///') else database_url
     
     conn = sqlite3.connect(db_path)
+=======
+    conn = sqlite3.connect(Config.DATABASE_URL.replace('sqlite:///', ''))
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb
     conn.row_factory = sqlite3.Row  # This makes rows behave like dictionaries
     return conn
 
@@ -77,6 +81,7 @@ def get_content_hash(content: str) -> str:
     return hashlib.sha256(content.encode('utf-8')).hexdigest()
 
 def get_cached_summary(content: str, source: str) -> Optional[str]:
+<<<<<<< HEAD
     try:
         conn = get_db_connection()
         content_hash = get_content_hash(content)
@@ -101,3 +106,23 @@ def set_cached_summary(content: str, source: str, summary: str):
         conn.close()
     except Exception:
         pass  # Ignore cache errors 
+=======
+    conn = get_db_connection()
+    content_hash = get_content_hash(content)
+    row = conn.execute(
+        'SELECT summary FROM ai_summary_cache WHERE content_hash = ? AND source = ? ORDER BY created DESC LIMIT 1',
+        (content_hash, source)
+    ).fetchone()
+    conn.close()
+    return row['summary'] if row else None
+
+def set_cached_summary(content: str, source: str, summary: str):
+    conn = get_db_connection()
+    content_hash = get_content_hash(content)
+    conn.execute(
+        'INSERT INTO ai_summary_cache (content_hash, source, summary) VALUES (?, ?, ?)',
+        (content_hash, source, summary)
+    )
+    conn.commit()
+    conn.close() 
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb

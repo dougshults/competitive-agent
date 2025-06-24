@@ -5,7 +5,11 @@ import time
 import asyncio
 from flask import Flask, jsonify, render_template, request
 from config import get_config
+<<<<<<< HEAD
 from database import init_database, test_db, get_db_connection, get_cached_summary, set_cached_summary
+=======
+from database import init_database, test_db, get_db_connection
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb
 from models import Competitor, Analysis
 from analyzer import CompetitiveAnalyzer
 from scraper import CompetitiveScraper
@@ -49,6 +53,7 @@ def setup_logging():
 logger = setup_logging()
 
 # Initialize database
+<<<<<<< HEAD
 try:
     init_database()
     db_status = test_db()
@@ -56,6 +61,11 @@ try:
 except Exception as e:
     logger.error(f"Database initialization failed: {str(e)}")
     # Continue without database for now
+=======
+init_database()
+db_status = test_db()
+logger.info(f"Database status: {db_status}")
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb
 
 # Error handlers
 @app.errorhandler(404)
@@ -77,6 +87,7 @@ def internal_error(error):
 # Routes
 @app.route('/')
 def home():
+<<<<<<< HEAD
     """Dashboard home page route."""
     logger.info('Dashboard accessed')
     return render_template('dashboard.html')
@@ -84,6 +95,17 @@ def home():
 @app.route('/dashboard')
 def dashboard():
     """Redirect to home for backward compatibility."""
+=======
+    """Home page route."""
+    logger.info('Home page accessed')
+    return jsonify({
+        "message": "Competitive Analysis Agent",
+        "status": "running"
+    })
+
+@app.route('/dashboard')
+def dashboard():
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb
     return render_template('dashboard.html')
 
 @app.route('/competitor/<int:competitor_id>')
@@ -341,6 +363,7 @@ def proptech_articles():
 
 @app.route('/api/proptech-intelligence')
 def proptech_intelligence():
+<<<<<<< HEAD
     """Advanced PropTech intelligence with real-time analysis."""
     try:
         scraper = CompetitiveScraper()
@@ -425,6 +448,48 @@ def proptech_intelligence():
     except Exception as e:
         logger.error(f'PropTech intelligence error: {str(e)}')
         return jsonify({"error": str(e)}), 500
+=======
+    scraper = CompetitiveScraper()
+    analyzer = CompetitiveAnalyzer()
+    articles = scraper.scrape_proptech_articles(max_articles=10)
+
+    async def analyze_article_async(article):
+        content = article.get('content', '')
+        if not content:
+            return None
+        try:
+            loop = asyncio.get_event_loop()
+            # Run analyze_content in a thread to avoid blocking
+            summary = await loop.run_in_executor(
+                None, analyzer.analyze_content, content, article.get('source', '')
+            )
+            return {
+                'title': article.get('title', ''),
+                'source': article.get('source', ''),
+                'link': article.get('link', article.get('url', '')),
+                'proptech_analysis': summary or ''
+            }
+        except Exception as e:
+            logger.error(f"Error analyzing article: {str(e)}")
+            return None
+
+    async def analyze_all_articles():
+        tasks = [analyze_article_async(article) for article in articles]
+        results = await asyncio.gather(*tasks)
+        return [r for r in results if r]
+
+    # Run the async analysis
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    analyses = loop.run_until_complete(analyze_all_articles())
+    loop.close()
+
+    return {
+        "proptech_focus": True,
+        "total_articles_found": len(analyses),
+        "analyses": analyses
+    }
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb
 
 @app.route('/api/debug-proptech-filter')
 def debug_proptech_filter():
@@ -457,6 +522,7 @@ def main():
     """
     config = get_config()
     
+<<<<<<< HEAD
     # Always return the app for Gunicorn to use
     logger.info(f'Competitive Agent Server configured for port {config.PORT}')
     return app
@@ -468,3 +534,15 @@ if __name__ == "__main__":
     # For direct execution
     config = get_config()
     app.run(host='0.0.0.0', port=config.PORT, debug=config.DEBUG) 
+=======
+    # Check if we're running in production (Gunicorn)
+    if os.environ.get('PRODUCTION'):
+        return app
+    else:
+        # Development server with debug mode enabled
+        logger.info(f'Starting Competitive Agent Server in development mode on port {config.PORT}')
+        app.run(host='0.0.0.0', port=config.PORT, debug=config.DEBUG)
+
+if __name__ == "__main__":
+    main() 
+>>>>>>> 80b4af1a639f50148534b7d9d0c486a88f307bdb
