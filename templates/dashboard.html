@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard | Competitive Agent{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-10">
+  <!-- Welcome Message -->
+  <section class="mb-10">
+    <div class="max-w-xl">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Welcome to PropTech Intel</h1>
+      <h2 class="text-xl font-semibold text-gray-700 mb-3">AI-powered competitive intelligence for real estate technology</h2>
+      <p class="text-base text-gray-600">
+        PropTech Intel monitors real estate technology news and uses AI to generate concise, actionable briefs.<br>
+        <span class="block mt-2 text-sm text-gray-500">
+          <strong>Structure:</strong> Flask backend, Jinja2 templates, OpenAI integration, Tailwind CSS.<br>
+          <strong>Business Value:</strong> Stay ahead of PropTech trends, competitors, and innovation with AI-powered summaries.
+        </span>
+      </p>
+    </div>
+  </section>
+  <!-- Load Articles Button -->
+  <div class="mb-10">
+    <button id="load-articles"
+      class="w-full sm:w-auto bg-[oklch(69.6%_0.17_162.48)] text-white font-semibold py-3 px-8 rounded-lg shadow transition text-lg"
+      style="--tw-bg-opacity:1;"
+      onmouseover="this.style.background='oklch(39.3% 0.095 152.535)'" onmouseout="this.style.background='oklch(69.6% 0.17 162.48)'">
+      Load Articles
+    </button>
+  </div>
+  <!-- Articles List -->
+  <div id="articles" class="flex flex-col gap-y-8">
+    <!-- Article cards injected by JS -->
+  </div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="/static/js/app.js"></script>
+{% endblock %} 
