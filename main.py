@@ -49,9 +49,13 @@ def setup_logging():
 logger = setup_logging()
 
 # Initialize database
-init_database()
-db_status = test_db()
-logger.info(f"Database status: {db_status}")
+try:
+    init_database()
+    db_status = test_db()
+    logger.info(f"Database status: {db_status}")
+except Exception as e:
+    logger.error(f"Database initialization failed: {str(e)}")
+    # Continue without database for now
 
 # Error handlers
 @app.errorhandler(404)
