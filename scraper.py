@@ -29,23 +29,27 @@ class CompetitiveScraper:
         'real estate agents', 'real estate brokers', 'realtors', 'leasing agents',
         'property owners', 'homeowners', 'buyers', 'sellers', 'investors',
         'developers', 'contractors', 'architects', 'property inspectors',
-        
+        'agent', 'agents', 'broker', 'brokers', 'brokerage', 'brokerages',
+        # === JARGON & INDUSTRY TERMS ===
+        'MLS', 'escrow', 'title insurance', 'closing costs', 'listing agent', 'buyer agent',
+        'dual agency', 'commission', 'open house', 'walkthrough', 'staging', 'zoning', 'permit',
+        'deed', 'foreclosure', 'short sale', 'flip', 'fixer-upper', 'turnkey', 'cap rate', 'NOI',
+        'cash flow', '1031 exchange', 'syndication', 'crowdfunding', 'fractional ownership',
+        'blockchain real estate', 'tokenization', 'smart contract',
         # === PROPERTY TYPES ===
         'real estate', 'property', 'properties', 'housing', 'homes', 'houses',
         'apartments', 'condos', 'condominiums', 'townhomes', 'single family',
         'multi family', 'commercial property', 'commercial real estate',
         'office buildings', 'office space', 'retail space', 'warehouses',
         'industrial property', 'land', 'lots', 'vacant land',
-        
         # === FINANCIAL & TRANSACTIONS ===
         'property values', 'home values', 'property valuation', 'appraisal',
         'mortgage', 'mortgages', 'lending', 'loan', 'refinancing',
-        'down payment', 'closing costs', 'escrow', 'title',
+        'down payment', 'escrow', 'title',
         'rent', 'rental', 'lease', 'leasing', 'rent control',
         'property taxes', 'hoa fees', 'maintenance costs',
         'investment property', 'property investment', 'real estate investment',
         'reit', 'real estate funds', 'crowdfunding real estate',
-        
         # === TECHNOLOGY & PLATFORMS ===
         'proptech', 'property technology', 'real estate tech', 'real estate technology',
         'real estate platform', 'rental platform', 'property platform',
@@ -54,21 +58,18 @@ class CompetitiveScraper:
         'smart building', 'smart home', 'iot building', 'building automation',
         'property analytics', 'real estate data', 'property data',
         'virtual tours', 'digital property', 'online real estate',
-        
         # === BUSINESS MODELS & SERVICES ===
-        'property management', 'facility management', 'building management',
+        'facility management', 'building management',
         'real estate services', 'property services', 'leasing services',
         'co-living', 'co-working', 'flexible space', 'shared space',
         'short term rental', 'vacation rental', 'corporate housing',
         'build to rent', 'rent to own', 'lease to own',
         'property marketplace', 'real estate marketplace',
-        
         # === CONSTRUCTION & DEVELOPMENT ===
         'construction', 'construction tech', 'building', 'development',
         'new construction', 'renovation', 'remodeling', 'home improvement',
         'general contractor', 'subcontractor', 'construction management',
         'building materials', 'construction software', 'project management',
-        
         # === MARKET SEGMENTS ===
         'residential real estate', 'commercial real estate', 'industrial real estate',
         'luxury real estate', 'affordable housing', 'student housing',
