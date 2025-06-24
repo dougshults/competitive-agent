@@ -351,25 +351,78 @@ def proptech_intelligence():
         if not articles:
             return jsonify({"message": "No PropTech articles found", "intelligence": []})
         
-        # Return articles without AI analysis for now (simplified approach)
-        intel_results = []
-        for article in articles[:8]:
-            intel_results.append({
-                "title": article.get('title', ''),
-                "source": article.get('source', ''),
-                "url": article.get('url', ''),
-                "published": article.get('published', ''),
-                "summary": f"Source: {article.get('source', 'Unknown')}\n\nContent preview: {article.get('content', '')[:200]}...",
-                "cached": False
+        # Try to initialize analyzer and perform AI analysis
+        try:
+            analyzer = CompetitiveAnalyzer()
+            logger.info("CompetitiveAnalyzer initialized successfully")
+            
+            intel_results = []
+            for article in articles[:5]:  # Limit to 5 for performance
+                try:
+                    content = f"Title: {article.get('title', '')}\nContent: {article.get('content', '')}"
+                    
+                    # Check cache first
+                    cached_summary = get_cached_summary(content, article.get('source', 'Unknown'))
+                    
+                    if cached_summary:
+                        analysis = cached_summary
+                        cached = True
+                        logger.info(f"Using cached analysis for: {article.get('title', '')[:50]}")
+                    else:
+                        # Perform AI analysis
+                        analysis = analyzer.analyze_content(content, article.get('source', 'Unknown'))
+                        set_cached_summary(content, article.get('source', 'Unknown'), analysis)
+                        cached = False
+                        logger.info(f"Generated new analysis for: {article.get('title', '')[:50]}")
+                    
+                    intel_results.append({
+                        "title": article.get('title', ''),
+                        "source": article.get('source', ''),
+                        "url": article.get('url', ''),
+                        "published": article.get('published', ''),
+                        "summary": analysis,
+                        "cached": cached
+                    })
+                except Exception as e:
+                    logger.error(f'Error analyzing article {article.get("title", "")}: {str(e)}')
+                    intel_results.append({
+                        "title": article.get('title', ''),
+                        "source": article.get('source', ''),
+                        "url": article.get('url', ''),
+                        "published": article.get('published', ''),
+                        "summary": f"Analysis failed: {str(e)}",
+                        "cached": False
+                    })
+            
+            return jsonify({
+                "total_articles_found": len(articles),
+                "analyses_completed": len(intel_results),
+                "intelligence": intel_results,
+                "timestamp": time.time(),
+                "note": "AI-powered competitive intelligence analysis"
             })
-        
-        return jsonify({
-            "total_articles_found": len(articles),
-            "analyses_completed": len(intel_results),
-            "intelligence": intel_results,
-            "timestamp": time.time(),
-            "note": "Showing article previews - AI analysis will be added after resolving API configuration"
-        })
+            
+        except Exception as e:
+            logger.error(f"Could not initialize analyzer: {str(e)}")
+            # Fallback to basic article display
+            intel_results = []
+            for article in articles[:8]:
+                intel_results.append({
+                    "title": article.get('title', ''),
+                    "source": article.get('source', ''),
+                    "url": article.get('url', ''),
+                    "published": article.get('published', ''),
+                    "summary": f"**Source:** {article.get('source', 'Unknown')}\n\n**Content Preview:** {article.get('content', '')[:200]}...\n\n**Note:** AI analysis unavailable - {str(e)}",
+                    "cached": False
+                })
+            
+            return jsonify({
+                "total_articles_found": len(articles),
+                "analyses_completed": len(intel_results),
+                "intelligence": intel_results,
+                "timestamp": time.time(),
+                "note": f"AI analysis temporarily unavailable: {str(e)}"
+            })
         
     except Exception as e:
         logger.error(f'PropTech intelligence error: {str(e)}')
