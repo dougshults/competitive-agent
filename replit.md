@@ -104,4 +104,5 @@ Changelog:
 
 ```
 Preferred communication style: Simple, everyday language.
+Deploy actual existing Flask app from GitHub repository, not create new application.
 ```
