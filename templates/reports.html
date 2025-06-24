@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="fw-bold">Reports & Insights</h1>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#generateReportModal">
+                    <i class="fas fa-plus me-2"></i>Generate New Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Categories -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-chart-area fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Market Reports</h5>
+                    <p class="card-text text-muted">Comprehensive market analysis and trends</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm">View All</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-building fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Property Reports</h5>
+                    <p class="card-text text-muted">Individual property analysis and valuation</p>
+                    <a href="#" class="btn btn-outline-success btn-sm">View All</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-chart-pie fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Investment Reports</h5>
+                    <p class="card-text text-muted">ROI analysis and investment opportunities</p>
+                    <a href="#" class="btn btn-outline-warning btn-sm">View All</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-users fa-lg"></i>
+                    </div>
+                    <h5 class="card-title">Client Reports</h5>
+                    <p class="card-text text-muted">Custom reports for clients and stakeholders</p>
+                    <a href="#" class="btn btn-outline-info btn-sm">View All</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Reports -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">Recent Reports</h5>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary active">All</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Market</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Property</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Investment</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Report Name</th>
+                                    <th>Type</th>
+                                    <th>Generated</th>
+                                    <th>Status</th>
+                                    <th>Downloads</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-primary text-white rounded d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-chart-area"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Q2 2025 Market Analysis</h6>
+                                                <small class="text-muted">Metro Area Real Estate Trends</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-primary">Market Report</span></td>
+                                    <td>June 20, 2025</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>24</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-sm btn-outline-info">View</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Download</button>
+                                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-success text-white rounded d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-building"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Property Valuation - 123 Main St</h6>
+                                                <small class="text-muted">Comprehensive property analysis</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-success">Property Report</span></td>
+                                    <td>June 18, 2025</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>12</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-sm btn-outline-info">View</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Download</button>
+                                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-warning text-white rounded d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-chart-pie"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Investment Portfolio Analysis</h6>
+                                                <small class="text-muted">ROI and performance metrics</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-warning">Investment Report</span></td>
+                                    <td>June 15, 2025</td>
+                                    <td><span class="badge bg-warning">Processing</span></td>
+                                    <td>0</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-sm btn-outline-secondary" disabled>View</button>
+                                            <button class="btn btn-sm btn-outline-secondary" disabled>Download</button>
+                                            <button class="btn btn-sm btn-outline-danger">Cancel</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-info text-white rounded d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="mb-0">Client Summary - ABC Realty</h6>
+                                                <small class="text-muted">Monthly performance summary</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-info">Client Report</span></td>
+                                    <td>June 12, 2025</td>
+                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td>8</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <button class="btn btn-sm btn-outline-info">View</button>
+                                            <button class="btn btn-sm btn-outline-secondary">Download</button>
+                                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Generate Report Modal -->
+<div class="modal fade" id="generateReportModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Generate New Report</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="generateReportForm">
+                    <div class="mb-3">
+                        <label for="reportName" class="form-label">Report Name</label>
+                        <input type="text" class="form-control" id="reportName" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="reportType" class="form-label">Report Type</label>
+                        <select class="form-select" id="reportType" required>
+                            <option value="">Select report type</option>
+                            <option value="market">Market Analysis</option>
+                            <option value="property">Property Valuation</option>
+                            <option value="investment">Investment Analysis</option>
+                            <option value="client">Client Summary</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="reportDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="reportDescription" rows="3" placeholder="Brief description of the report"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="reportParameters" class="form-label">Parameters</label>
+                        <div class="border rounded p-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="dateRange" class="form-label">Date Range</label>
+                                    <select class="form-select" id="dateRange">
+                                        <option value="30">Last 30 days</option>
+                                        <option value="90">Last 3 months</option>
+                                        <option value="180">Last 6 months</option>
+                                        <option value="365">Last year</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="location" class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="location" placeholder="City or region">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="generateReport()">Generate Report</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+<script>
+    function generateReport() {
+        const reportName = document.getElementById('reportName').value;
+        const reportType = document.getElementById('reportType').value;
+        
+        if (!reportName || !reportType) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        // Close modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('generateReportModal'));
+        modal.hide();
+        
+        // Show success message
+        alert('Report generation started! You will be notified when it\'s ready.');
+        
+        // Reset form
+        document.getElementById('generateReportForm').reset();
+    }
+</script>
+{% endblock %}

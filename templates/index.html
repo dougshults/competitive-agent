@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">PropTech Intel</h1>
+                <p class="lead mb-4">
+                    Advanced property technology intelligence platform providing comprehensive market analysis, 
+                    property insights, and data-driven decision making tools for real estate professionals.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-light btn-lg">View Dashboard</a>
+                    <a href="{{ url_for('analysis') }}" class="btn btn-outline-light btn-lg">Start Analysis</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-light rounded-3 p-4 text-dark">
+                    <h5 class="mb-3">Market Overview</h5>
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <h3 class="text-primary">$387K</h3>
+                            <small class="text-muted">Avg Price</small>
+                        </div>
+                        <div class="col-4">
+                            <h3 class="text-success">+5.2%</h3>
+                            <small class="text-muted">Price Change</small>
+                        </div>
+                        <div class="col-4">
+                            <h3 class="text-info">1,234</h3>
+                            <small class="text-muted">Properties</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="fw-bold">Platform Features</h2>
+                <p class="text-muted">Comprehensive tools for property technology intelligence</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-chart-line fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Market Analysis</h5>
+                        <p class="card-text">Real-time market data analysis with trend forecasting and comparative market analysis tools.</p>
+                        <a href="{{ url_for('analysis') }}" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-home fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Property Intelligence</h5>
+                        <p class="card-text">Comprehensive property data aggregation with automated valuation models and investment analysis.</p>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-success">Explore</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-file-alt fa-lg"></i>
+                        </div>
+                        <h5 class="card-title">Custom Reports</h5>
+                        <p class="card-text">Generate detailed reports with actionable insights and customizable metrics for decision making.</p>
+                        <a href="{{ url_for('reports') }}" class="btn btn-outline-info">View Reports</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Stats Section -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <h3 class="text-primary fw-bold">50K+</h3>
+                        <p class="text-muted">Properties Analyzed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <h3 class="text-success fw-bold">25</h3>
+                        <p class="text-muted">Markets Covered</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <h3 class="text-info fw-bold">99.8%</h3>
+                        <p class="text-muted">Data Accuracy</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-0 bg-transparent">
+                    <div class="card-body">
+                        <h3 class="text-warning fw-bold">24/7</h3>
+                        <p class="text-muted">Real-time Updates</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+{% endblock %}
