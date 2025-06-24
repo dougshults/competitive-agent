@@ -14,7 +14,9 @@ Config = get_config()
 
 class CompetitiveAnalyzer:
     def __init__(self, max_retries: int = 3, retry_delay: int = 1):
-        self.client = openai.OpenAI(api_key=Config.OPENAI_API_KEY)
+        self.client = openai.OpenAI(
+            api_key=Config.OPENAI_API_KEY
+        )
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         logger.info("CompetitiveAnalyzer initialized")

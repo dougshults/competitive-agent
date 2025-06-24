@@ -7,14 +7,15 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const res = await fetch('/api/proptech-intelligence');
             const data = await res.json();
-            if (data.analyses && data.analyses.length > 0) {
-                articlesDiv.innerHTML = data.analyses.map(article => {
-                    const articleUrl = article.link || '';
+            if (data.intelligence && data.intelligence.length > 0) {
+                articlesDiv.innerHTML = data.intelligence.map(article => {
+                    const articleUrl = article.url || article.link || '';
                     // Parse AI summary into table with bold headers
                     let summaryRows = '';
                     let summaryBlocks = '';
-                    if (article.proptech_analysis) {
-                        const sections = article.proptech_analysis.split('**');
+                    if (article.summary || article.proptech_analysis) {
+                        const analysisText = article.summary || article.proptech_analysis;
+                        const sections = analysisText.split('**');
                         if (sections.length > 1) {
                             // Table rows for desktop
                             summaryRows = sections.slice(1).reduce((acc, val, idx, arr) => {
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             }, '');
                         } else {
                             // Fallback for old format
-                            const points = article.proptech_analysis.split(/\n?\s*\d+\.\s+/).filter(Boolean);
+                            const points = analysisText.split(/\n?\s*\d+\.\s+/).filter(Boolean);
                             summaryRows = points.map((point, idx) => {
                                 const colonIdx = point.indexOf(':');
                                 let label = `Point ${idx + 1}`;
