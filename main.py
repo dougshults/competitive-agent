@@ -5,7 +5,7 @@ import time
 import asyncio
 from flask import Flask, jsonify, render_template, request
 from config import get_config
-from database import init_database, test_db, get_db_connection
+from database import init_database, test_db, get_db_connection, get_cached_summary, set_cached_summary
 from models import Competitor, Analysis
 from analyzer import CompetitiveAnalyzer
 from scraper import CompetitiveScraper

@@ -17,7 +17,9 @@ class CompetitiveAnalyzer:
         if not Config.OPENAI_API_KEY:
             raise ValueError("OpenAI API key is required")
         
-        self.client = openai.OpenAI(api_key=Config.OPENAI_API_KEY)
+        self.client = openai.OpenAI(
+            api_key=Config.OPENAI_API_KEY
+        )
         self.max_retries = max_retries
         self.retry_delay = retry_delay
         logger.info("CompetitiveAnalyzer initialized")
